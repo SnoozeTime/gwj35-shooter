@@ -6,11 +6,16 @@ export(float) var speed = 5
 export var player_bullet = true
 
 var target: Node2D = null
-
+var life = 10.0
+var elapsed = 0.0
 func init():
 	rotation = dir.angle()
 
 func _physics_process(delta):
+	elapsed += delta
+	if elapsed >= life:
+		init_remove()
+		set_physics_process(false)
 	translate(dir*speed)
 
 	# Update the dir so that the bullet is going towards the target.

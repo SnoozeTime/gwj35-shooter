@@ -62,14 +62,15 @@ func _process(delta):
 		if payload_switcher == null:
 			if Input.is_action_just_pressed(k):
 				payload_mapping[GameData.actions_mapping[k]].on_action_pressed(self)
-				get_hud().activate_skill(GameData.actions_mapping[k])
 			if Input.is_action_just_released(k):
 				payload_mapping[GameData.actions_mapping[k]].on_action_released()
+				get_hud().activate_skill(GameData.actions_mapping[k])
 		else:
 			if Input.is_action_just_pressed(k):
 				var old_payload = GameData.actions_mapping[k]
 				GameData.actions_mapping[k] = payload_switcher.current_payload
 				payload_switcher.current_payload = old_payload
+				get_hud().set_skill_icons()
 		
 	if Input.is_action_just_pressed("Shoot"):
 		shoot()

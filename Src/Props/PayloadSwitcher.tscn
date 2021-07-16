@@ -1,13 +1,38 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Src/Props/PayloadSwitcher.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Sprites/payload_switcher.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Sprites/laser_icon_2.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Sprites/shield_icon_2.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Sprites/dash_icon_2.png" type="Texture" id=5]
+[ext_resource path="res://Assets/Sprites/missil_icon_2.png" type="Texture" id=6]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 17.2173
 
+[sub_resource type="Animation" id=2]
+resource_name = "Idle"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -0.111362, -14.2544 ), Vector2( -3.8147e-06, -17.1498 ), Vector2( -0.111362, -14.2544 ) ]
+}
+
 [node name="PayloadSwitcher" type="Node2D"]
 script = ExtResource( 1 )
+current_payload = 1
+missil_texture = ExtResource( 6 )
+laser_texture = ExtResource( 3 )
+dash_texture = ExtResource( 5 )
+shield_texture = ExtResource( 4 )
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_mask = 2
@@ -18,5 +43,13 @@ shape = SubResource( 1 )
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 0.176773, 1.94454 )
 texture = ExtResource( 2 )
+
+[node name="PayloadSprite" type="Sprite" parent="."]
+position = Vector2( -0.0559192, -15.6959 )
+texture = ExtResource( 3 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="PayloadSprite"]
+autoplay = "Idle"
+anims/Idle = SubResource( 2 )
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_Area2D_body_exited"]
