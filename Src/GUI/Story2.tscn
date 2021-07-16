@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Src/GUI/Story.tscn" type="PackedScene" id=1]
+
+[node name="Story2" instance=ExtResource( 1 )]
+next_scene = "res://Src/Game.tscn"
+
+[node name="Label" parent="." index="1"]
+text = "It is said that these relics
+yield enormous power.
+
+Unfortunately, you are not alone
+to look for them..."

@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Assets/Sprites/duck_enemy.png" type="Texture" id=1]
+[ext_resource path="res://Src/Enemies/Enemy1Dead.gd" type="Script" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 11.2098, 2.55725 )
+
+[node name="KinematicBody2D" type="KinematicBody2D"]
+collision_layer = 512
+script = ExtResource( 2 )
+
+[node name="Enemy1Dead" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+vframes = 3
+hframes = 4
+frame = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( -3.31081, 8.93921 )
+shape = SubResource( 1 )
+
+[node name="Tween" type="Tween" parent="."]

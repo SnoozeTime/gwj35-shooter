@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Src/GUI/SkillContainer.tscn" type="PackedScene" id=1]
+
+[node name="LaserSkillContainer" instance=ExtResource( 1 )]
+margin_right = -294.0
+margin_bottom = -214.0
+rect_min_size = Vector2( 26, 26 )
+payload = 1
+timeout = 4.0

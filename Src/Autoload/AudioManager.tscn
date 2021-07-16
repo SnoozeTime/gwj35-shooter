@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Assets/Audio/Sounds/shoot2.wav" type="AudioStream" id=1]
+[ext_resource path="res://Assets/Audio/Sounds/shoot1.wav" type="AudioStream" id=2]
+[ext_resource path="res://Src/Autoload/AudioManager.gd" type="Script" id=3]
+
+[node name="AudioManager" type="Node"]
+script = ExtResource( 3 )
+
+[node name="Sounds" type="Node" parent="."]
+
+[node name="Shoot2" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource( 1 )
+bus = "Sound"
+
+[node name="Shoot1" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource( 2 )
+bus = "Sound"

@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Src/Graphics/AfterDash.gd" type="Script" id=1]
+
+[sub_resource type="Shader" id=1]
+code = "shader_type canvas_item;
+
+uniform float white_progress : hint_range(0,1) = 0;
+uniform vec4 effect_color: hint_color;
+
+vec3 interpolate_vec3(vec3 start, vec3 end, float delta){
+    return start + (end - start) * delta;
+}
+
+void fragment() {
+    vec4 origin = texture(TEXTURE, UV);
+	COLOR.rgb = interpolate_vec3(origin.rgb, effect_color.rgb, white_progress);
+	COLOR.a = origin.a/2.0;
+}"
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = SubResource( 1 )
+shader_param/white_progress = 0.816
+shader_param/effect_color = Color( 0.0941176, 1, 0.898039, 1 )
+
+[node name="AfterDash" type="Sprite"]
+material = SubResource( 2 )
+script = ExtResource( 1 )
+life = 0.5
+
+[node name="Tween" type="Tween" parent="."]
