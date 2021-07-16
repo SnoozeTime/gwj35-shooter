@@ -34,6 +34,12 @@ const PISTOL_BEFORE_Z_INDEX = 3
 var damage_timeout = 0.1
 var damage_elapsed = 0.0
 
+var impulse = Vector2.ZERO
+
+var impulse_decay = 0.01
+
+func add_impulse(p: Vector2):
+	impulse += p
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	player = get_tree().get_nodes_in_group("Player")[0]
@@ -63,8 +69,9 @@ func _physics_process(_delta):
 		return
 	
 	velocity = dir * speed
-	move_and_slide(velocity)
-	
+	move_and_slide(velocity+impulse)
+	impulse *= impulse_decay
+
 	if get_slide_count() > 0:
 		var collision = get_slide_collision(get_slide_count() - 1)
 		var normal = collision.normal
@@ -122,7 +129,7 @@ func hit(bullet_position: Vector2):
 
 	damage_elapsed = damage_timeout
 	var push_dir = bullet_position.direction_to(global_position)
-	translate(5*push_dir)
+	add_impulse(200*push_dir)
 	$HitAnimationPlayer.play("Hit")
 
 	health -= 1

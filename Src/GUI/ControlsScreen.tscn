@@ -1,0 +1,116 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Src/GUI/ControlSelector.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Src/GUI/ControlsScreen.gd" type="Script" id=3]
+
+[node name="ControlsScreen" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.164706, 0.415686, 0.486275, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+anchor_left = 0.016
+anchor_top = 0.028
+anchor_right = 0.342
+anchor_bottom = 0.119
+margin_left = -0.480001
+margin_top = -1.16
+margin_right = 802.24
+margin_bottom = 0.32
+custom_constants/separation = 56
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GoBackButton" type="Button" parent="HBoxContainer"]
+margin_right = 64.0
+margin_bottom = 23.0
+text = "Go Back"
+flat = true
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 22.1536
+margin_top = 57.1684
+margin_right = -205.846
+margin_bottom = -6.8316
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ControlSelectorContainer" type="GridContainer" parent="MarginContainer"]
+margin_right = 92.0
+margin_bottom = 176.0
+columns = 2
+
+[node name="ControlSelector2" parent="MarginContainer/ControlSelectorContainer" instance=ExtResource( 1 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 3.0
+margin_right = 41.0
+margin_bottom = 26.0
+size_flags_horizontal = 6
+action_name = "mvt_up"
+
+[node name="ControlSelector4" parent="MarginContainer/ControlSelectorContainer" instance=ExtResource( 1 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 51.0
+margin_right = 89.0
+margin_bottom = 26.0
+size_flags_horizontal = 6
+action_name = "mvt_down"
+
+[node name="ControlSelector3" parent="MarginContainer/ControlSelectorContainer" instance=ExtResource( 1 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 3.0
+margin_top = 30.0
+margin_right = 41.0
+margin_bottom = 56.0
+size_flags_horizontal = 6
+
+[node name="ControlSelector5" parent="MarginContainer/ControlSelectorContainer" instance=ExtResource( 1 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 51.0
+margin_top = 30.0
+margin_right = 89.0
+margin_bottom = 56.0
+size_flags_horizontal = 6
+action_name = "mvt_left"
+
+[node name="ControlSelector6" parent="MarginContainer/ControlSelectorContainer" instance=ExtResource( 1 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 3.0
+margin_top = 60.0
+margin_right = 41.0
+margin_bottom = 86.0
+size_flags_horizontal = 6
+action_name = "Action1"
+
+[node name="ControlSelector7" parent="MarginContainer/ControlSelectorContainer" instance=ExtResource( 1 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 51.0
+margin_top = 60.0
+margin_right = 89.0
+margin_bottom = 86.0
+size_flags_horizontal = 6
+action_name = "Action2"
+[connection signal="focus_entered" from="HBoxContainer/GoBackButton" to="." method="_on_GoBackButton_focus_entered"]
+[connection signal="mouse_entered" from="HBoxContainer/GoBackButton" to="." method="_on_GoBackButton_focus_entered"]
+[connection signal="pressed" from="HBoxContainer/GoBackButton" to="." method="_on_GoBackButton_pressed"]

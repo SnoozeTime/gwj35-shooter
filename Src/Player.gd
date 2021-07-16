@@ -23,7 +23,8 @@ var active_tech = null
 
 const MAX_HEALTH = 10
 var health = MAX_HEALTH
-
+var impulse = Vector2.ZERO
+var impulse_decay = 0.01
 
 onready var payload_mapping = {
 	Payloads.PayloadType.Dash: $Dash,
@@ -119,6 +120,7 @@ func _physics_process(delta):
 	if is_dead():
 		return
 
+	
 	dir = Vector2.ZERO
 	
 	if active_tech != null:
@@ -130,7 +132,8 @@ func _physics_process(delta):
 		last_dir = dir
 		
 	
-	velocity = move_and_slide(velocity)
+	velocity = move_and_slide(velocity+impulse)
+	impulse *= impulse_decay
 	update_dir_and_anim()
 
 func handle_inputs():
@@ -168,7 +171,7 @@ func hit(bullet_pos: Vector2):
 		return
 	
 	var push_dir = bullet_pos.direction_to(global_position)
-	translate(5*push_dir)
+	add_impulse(200*push_dir)
 	$Camera2D.add_trauma(.3)
 		
 	$HitAnimationPlayer.play("Hit")
@@ -191,3 +194,10 @@ func death_animation(bullet_dir: Vector2):
 	Engine.time_scale = 0.3
 	yield(get_tree().create_timer(1), "timeout")
 	Engine.time_scale = 1.0
+	
+	yield(get_tree().create_timer(0.5), "timeout")
+	$CanvasLayer/DeadScreen.update_and_show()
+
+func add_impulse(p: Vector2):
+	impulse += p
+	$Camera2D.add_trauma(.5)

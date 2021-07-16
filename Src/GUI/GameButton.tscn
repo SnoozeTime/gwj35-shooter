@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Src/GUI/GameButton.gd" type="Script" id=1]
+[ext_resource path="res://Resources/HUDFont.tres" type="DynamicFont" id=2]
+
+[node name="GameButton" type="Button"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = ExtResource( 2 )
+flat = true
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="mouse_entered" from="." to="." method="_on_GameButton_mouse_entered"]

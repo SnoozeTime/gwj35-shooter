@@ -48,6 +48,7 @@ __meta__ = {
 }
 
 [node name="BossHealthBar" type="VBoxContainer" parent="."]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 0.117
 margin_top = 4.0

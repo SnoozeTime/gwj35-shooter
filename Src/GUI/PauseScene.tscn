@@ -48,5 +48,7 @@ size_flags_vertical = 3
 custom_fonts/font = ExtResource( 1 )
 text = "Exit"
 flat = true
+[connection signal="mouse_entered" from="MarginContainer/VBoxContainer/ResumeButton" to="." method="_on_Button_mouse_entered"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/ResumeButton" to="." method="_on_ResumeButton_pressed"]
+[connection signal="mouse_entered" from="MarginContainer/VBoxContainer/ExitButton" to="." method="_on_Button_mouse_entered"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/ExitButton" to="." method="_on_ExitButton_pressed"]

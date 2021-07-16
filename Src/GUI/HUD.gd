@@ -25,11 +25,12 @@ func set_boss_health(boss_name, current, max_health):
 func hide_boss():
 	$BossHealthBar.hide()
 
-func set_time(dt):
-	$Timer/Label.text = "%ds" % dt
+func set_time():
+	$Timer/Label.text = GameData.get_formatted_time()
 
 func _process(_delta):
-	set_time(GameData.current_game_time)
+	
+	set_time()
 
 
 func activate_skill(payload):

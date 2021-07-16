@@ -21,49 +21,53 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -51.5
-margin_top = -90.0
-margin_right = 50.5
-margin_bottom = 98.0
+margin_left = -87.0
+margin_top = -90.5
+margin_right = 84.0
+margin_bottom = 97.5
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="StoryButton" type="Button" parent="HBoxContainer"]
-margin_right = 102.0
+margin_right = 171.0
 margin_bottom = 44.0
 custom_fonts/font = ExtResource( 1 )
 custom_colors/font_color_hover = Color( 1, 0.0666667, 0.0666667, 1 )
 text = "\"Story\""
 flat = true
 
-[node name="ArenaButton" type="Button" parent="HBoxContainer"]
+[node name="SettingButton" type="Button" parent="HBoxContainer"]
 margin_top = 48.0
-margin_right = 102.0
+margin_right = 171.0
 margin_bottom = 92.0
 custom_fonts/font = ExtResource( 1 )
 custom_colors/font_color_hover = Color( 1, 0.0666667, 0.0666667, 1 )
-text = "Arena"
+text = "Game Settings"
 flat = true
 
-[node name="SettingButton" type="Button" parent="HBoxContainer"]
+[node name="SettingButton2" type="Button" parent="HBoxContainer"]
 margin_top = 96.0
-margin_right = 102.0
+margin_right = 171.0
 margin_bottom = 140.0
 custom_fonts/font = ExtResource( 1 )
 custom_colors/font_color_hover = Color( 1, 0.0666667, 0.0666667, 1 )
-text = "Settings"
+text = "Audio Settings"
 flat = true
 
 [node name="QuitButton" type="Button" parent="HBoxContainer"]
 margin_top = 144.0
-margin_right = 102.0
+margin_right = 171.0
 margin_bottom = 188.0
 custom_fonts/font = ExtResource( 1 )
 custom_colors/font_color_hover = Color( 1, 0.0666667, 0.0666667, 1 )
 text = "Quit"
 flat = true
+[connection signal="mouse_entered" from="HBoxContainer/StoryButton" to="." method="_on_Button_mouse_entered"]
 [connection signal="pressed" from="HBoxContainer/StoryButton" to="." method="_on_StoryButton_pressed"]
-[connection signal="pressed" from="HBoxContainer/ArenaButton" to="." method="_on_ArenaButton_pressed"]
+[connection signal="mouse_entered" from="HBoxContainer/SettingButton" to="." method="_on_Button_mouse_entered"]
 [connection signal="pressed" from="HBoxContainer/SettingButton" to="." method="_on_SettingButton_pressed"]
+[connection signal="mouse_entered" from="HBoxContainer/SettingButton2" to="." method="_on_Button_mouse_entered"]
+[connection signal="pressed" from="HBoxContainer/SettingButton2" to="." method="_on_SettingButton2_pressed"]
+[connection signal="mouse_entered" from="HBoxContainer/QuitButton" to="." method="_on_Button_mouse_entered"]
 [connection signal="pressed" from="HBoxContainer/QuitButton" to="." method="_on_QuitButton_pressed"]

@@ -1,0 +1,130 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Src/GUI/ControlSelector.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Src/GUI/Settings.gd" type="Script" id=3]
+[ext_resource path="res://Resources/MediumLabelFont.tres" type="DynamicFont" id=4]
+[ext_resource path="res://Resources/BigLabelFont.tres" type="DynamicFont" id=5]
+[ext_resource path="res://Resources/HUDFont.tres" type="DynamicFont" id=6]
+
+[node name="Settings" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.0588235, 0.552941, 0.552941, 1 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+margin_left = 5.35147
+margin_top = 43.4061
+margin_right = 131.351
+margin_bottom = 215.406
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CheckBox" type="CheckBox" parent="VBoxContainer"]
+margin_right = 126.0
+margin_bottom = 34.0
+custom_fonts/font = ExtResource( 4 )
+pressed = true
+text = "Screen Shake"
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+margin_top = 38.0
+margin_right = 126.0
+margin_bottom = 64.0
+custom_fonts/font = ExtResource( 4 )
+text = "Controls"
+
+[node name="ControlSelectorContainer" type="GridContainer" parent="VBoxContainer"]
+margin_top = 68.0
+margin_right = 126.0
+margin_bottom = 133.0
+columns = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ControlSelector2" parent="VBoxContainer/ControlSelectorContainer" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 15.0
+margin_right = 45.0
+margin_bottom = 19.0
+size_flags_horizontal = 6
+action_name = "mvt_up"
+
+[node name="ControlSelector4" parent="VBoxContainer/ControlSelectorContainer" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 80.0
+margin_right = 110.0
+margin_bottom = 19.0
+size_flags_horizontal = 6
+action_name = "mvt_down"
+
+[node name="ControlSelector3" parent="VBoxContainer/ControlSelectorContainer" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 15.0
+margin_top = 23.0
+margin_right = 45.0
+margin_bottom = 42.0
+size_flags_horizontal = 6
+
+[node name="ControlSelector5" parent="VBoxContainer/ControlSelectorContainer" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 80.0
+margin_top = 23.0
+margin_right = 110.0
+margin_bottom = 42.0
+size_flags_horizontal = 6
+
+[node name="ControlSelector6" parent="VBoxContainer/ControlSelectorContainer" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 15.0
+margin_top = 46.0
+margin_right = 45.0
+margin_bottom = 65.0
+size_flags_horizontal = 6
+action_name = "Action1"
+
+[node name="ControlSelector7" parent="VBoxContainer/ControlSelectorContainer" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 80.0
+margin_top = 46.0
+margin_right = 110.0
+margin_bottom = 65.0
+size_flags_horizontal = 6
+action_name = "Action2"
+
+[node name="GameSettingLabel" type="Label" parent="."]
+anchor_right = 1.0
+margin_bottom = 26.0
+custom_fonts/font = ExtResource( 5 )
+text = "Game Settings"
+align = 1
+
+[node name="Button" type="Button" parent="."]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -53.2975
+margin_top = -35.4597
+margin_right = -9.29749
+margin_bottom = -3.45972
+custom_fonts/font = ExtResource( 6 )
+text = "Back"
+flat = true
+[connection signal="mouse_entered" from="Button" to="." method="_on_Button_mouse_entered"]
+[connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]

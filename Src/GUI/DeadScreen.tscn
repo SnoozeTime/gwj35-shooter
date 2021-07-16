@@ -1,0 +1,95 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Resources/MediumLabelFont.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Resources/BigLabelFont.tres" type="DynamicFont" id=2]
+[ext_resource path="res://Resources/HUDFont.tres" type="DynamicFont" id=3]
+[ext_resource path="res://Assets/Sprites/GUI_panel.png" type="Texture" id=4]
+[ext_resource path="res://Src/GUI/DeadScreen.gd" type="Script" id=5]
+
+[node name="DeadScreen" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -91.5
+margin_top = -80.5
+margin_right = 91.5
+margin_bottom = 80.5
+texture = ExtResource( 4 )
+patch_margin_left = 9
+patch_margin_top = 9
+patch_margin_right = 8
+patch_margin_bottom = 9
+
+[node name="Label" type="Label" parent="NinePatchRect"]
+margin_left = 39.7115
+margin_top = 3.3371
+margin_right = 144.711
+margin_bottom = 41.3371
+custom_fonts/font = ExtResource( 2 )
+text = "You died!"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PlayTimeLabel" type="Label" parent="NinePatchRect"]
+margin_left = 10.345
+margin_top = 43.0407
+margin_right = 86.345
+margin_bottom = 69.0407
+custom_fonts/font = ExtResource( 1 )
+text = "Play time:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="KilledLabel" type="Label" parent="NinePatchRect"]
+margin_left = 10.0113
+margin_top = 71.0802
+margin_right = 116.011
+margin_bottom = 109.08
+custom_fonts/font = ExtResource( 1 )
+text = "Enemies Killed"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="NinePatchRect"]
+margin_left = 60.7352
+margin_top = 112.794
+margin_right = 172.735
+margin_bottom = 152.794
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="QuitButton" type="Button" parent="NinePatchRect/HBoxContainer"]
+margin_right = 40.0
+margin_bottom = 40.0
+custom_fonts/font = ExtResource( 3 )
+text = "Quit"
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RestartButton" type="Button" parent="NinePatchRect/HBoxContainer"]
+margin_left = 44.0
+margin_right = 112.0
+margin_bottom = 40.0
+custom_fonts/font = ExtResource( 3 )
+text = "Restart"
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="NinePatchRect/HBoxContainer/QuitButton" to="." method="_on_QuitButton_pressed"]
+[connection signal="pressed" from="NinePatchRect/HBoxContainer/RestartButton" to="." method="_on_RestartButton_pressed"]

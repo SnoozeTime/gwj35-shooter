@@ -1,25 +1,27 @@
 extends Node
 
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
 
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
+onready var volumes = {
+	"Master": AudioServer.get_bus_volume_db(AudioServer.get_bus_index("Master")),
+	"Background": AudioServer.get_bus_volume_db(AudioServer.get_bus_index("Background")),
+	"Sound": AudioServer.get_bus_volume_db(AudioServer.get_bus_index("Sound")),
+}
 
 enum SoundType {
 	Shoot1,
-	Shoot2
+	Shoot2,
+	ButtonHover,
+	ButtonClick,
 }
 
 onready var sounds = {
 	SoundType.Shoot1: $Sounds/Shoot1,
 	SoundType.Shoot2: $Sounds/Shoot2,
+	SoundType.ButtonHover: $Sounds/ButtonHover,
+	SoundType.ButtonClick: $Sounds/ButtonClick,
 }
 
 func play_sound(sound):
-	sounds[sound].play()
+	if not sounds[sound].playing:
+		sounds[sound].play()

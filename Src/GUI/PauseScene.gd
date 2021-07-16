@@ -12,6 +12,7 @@ func pause():
 	set_deferred("is_paused", true)
 
 func _on_ResumeButton_pressed():
+	AudioManager.play_sound(AudioManager.SoundType.ButtonClick)
 	resume()
 
 func resume():
@@ -21,4 +22,8 @@ func resume():
 
 func _on_ExitButton_pressed():
 	resume()
+	AudioManager.play_sound(AudioManager.SoundType.ButtonClick)
 	Transition.fade_to("res://Src/GUI/MainMenu.tscn")
+
+func _on_Button_mouse_entered():
+	AudioManager.play_sound(AudioManager.SoundType.ButtonHover)

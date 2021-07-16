@@ -1,0 +1,51 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Src/GUI/AudioScreen.gd" type="Script" id=1]
+[ext_resource path="res://Resources/HUDFont.tres" type="DynamicFont" id=2]
+
+[node name="AudioScreen" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.0588235, 0.552941, 0.552941, 1 )
+
+[node name="HSlider" type="HSlider" parent="."]
+margin_left = 91.9932
+margin_top = 94.6731
+margin_right = 232.993
+margin_bottom = 110.673
+value = 100.0
+
+[node name="HSlider2" type="HSlider" parent="."]
+margin_left = 90.9921
+margin_top = 126.042
+margin_right = 231.992
+margin_bottom = 142.042
+value = 100.0
+
+[node name="Button" type="Button" parent="."]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -53.2975
+margin_top = -35.4597
+margin_right = -9.29749
+margin_bottom = -3.45972
+custom_fonts/font = ExtResource( 2 )
+text = "Back"
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="value_changed" from="HSlider" to="." method="_on_HSlider_value_changed"]
+[connection signal="value_changed" from="HSlider2" to="." method="_on_HSlider2_value_changed"]
+[connection signal="mouse_entered" from="Button" to="." method="_on_Button_mouse_entered"]
+[connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
